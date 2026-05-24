@@ -146,7 +146,8 @@ h1 {
 .gif-frame {
   position: relative;
   margin-inline: auto;
-  width: min(100%, 350px);
+  width: min(100%, 383px);
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 8px;
   background: rgba(4, 2, 12, 0.72);
@@ -168,11 +169,22 @@ h1 {
   opacity: 0.75;
 }
 
+.gif-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 7px;
+  box-shadow: inset 0 0 0 5px rgba(4, 2, 12, 0.96);
+}
+
 .gif-frame img {
   display: block;
-  width: 100%;
+  width: calc(100% + 10px);
   height: auto;
+  max-width: none;
   border-radius: 7px;
+  transform: translate(-5px, -5px);
 }
 
 @media (max-width: 480px) {
